@@ -1,17 +1,17 @@
 package javaa.dsa;
 
-class Node {
-
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-
-    int data;
-    Node next;
-}
-
 public class SinglyLinkedList {
+    class Node {
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    
+        int data;
+        Node next;
+    }
+    
     public Node head = null;
     public Node tail = null;
     public int size = 0;
