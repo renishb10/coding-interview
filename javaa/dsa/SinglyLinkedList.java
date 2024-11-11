@@ -11,7 +11,7 @@ public class SinglyLinkedList {
         int data;
         Node next;
     }
-    
+
     public Node head = null;
     public Node tail = null;
     public int size = 0;
@@ -115,6 +115,45 @@ public class SinglyLinkedList {
         }
     }
 
+    public void reverse() {
+        // Check if the list is empty or has only one node
+        if (head == null || head.next == null) {
+            return;
+        }
+    
+        Node prevNode = null;
+        Node currNode = head;
+        tail = head; // Tail becomes the original head after reversal
+    
+        // Iterate through the list and reverse the direction of each node's pointer
+        while (currNode != null) {
+            Node nextNode = currNode.next; // Temporarily store the next node
+            currNode.next = prevNode;      // Reverse the current node's pointer
+            prevNode = currNode;           // Move prevNode and currNode one step forward
+            currNode = nextNode;
+        }
+    
+        // Set the head to the last processed node, which is the new head of the reversed list
+        head = prevNode;
+    }
+
+    public Node reverseRecursion(Node head) {
+        // Base case: if head is null or only one node, it's the new head of reversed list
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // Recursively reverse the rest of the list
+        Node reversedHead = reverseRecursion(head.next);
+
+        // Make the next node point back to the current head
+        head.next.next = head;
+        head.next = null; // Set the next of the current node to null to avoid cycle
+
+        // Return the head of the reversed list
+        return reversedHead;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList slist = new SinglyLinkedList();
         slist.prepend(1);
@@ -137,9 +176,24 @@ public class SinglyLinkedList {
         System.out.println("Tail is " + slist.tail.data);
         System.out.println("Size is " + slist.size);
 
+        System.out.println("Remove items");
         slist.remove(2);
         slist.remove(7);
         slist.remove(1);
+        slist.print();
+        System.out.println("Head is " + slist.head.data);
+        System.out.println("Tail is " + slist.tail.data);
+        System.out.println("Size is " + slist.size);
+
+        System.out.println("Reverse List");
+        slist.reverse();
+        slist.print();
+        System.out.println("Head is " + slist.head.data);
+        System.out.println("Tail is " + slist.tail.data);
+        System.out.println("Size is " + slist.size);
+
+        System.out.println("Reverse List (Recursive)");
+        slist.head = slist.reverseRecursion(slist.head);
         slist.print();
         System.out.println("Head is " + slist.head.data);
         System.out.println("Tail is " + slist.tail.data);
