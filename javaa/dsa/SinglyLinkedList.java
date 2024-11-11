@@ -41,7 +41,7 @@ public class SinglyLinkedList {
         size++;
     }
 
-    public void insertAfter(int pos, int data) {
+    public void insert(int pos, int data) {
         if (pos < 1 || pos > size) {
             System.out.println("Index out of bounds");
             return;
@@ -75,6 +75,37 @@ public class SinglyLinkedList {
         }
     }
 
+    public void remove(int pos) {
+        if (pos < 1 || pos > size) {
+            System.out.println("Index out of bounds");
+            return;
+        }
+    
+        if (pos == 1) { // Remove the head
+            head = head.next;
+            if (size == 1) { // If it was the only node, update tail as well
+                tail = null;
+            }
+        } else {
+            Node currNode = head;
+            
+            // Traverse to the node just before the one to be removed
+            for (int i = 1; i < pos - 1; i++) {
+                currNode = currNode.next;
+            }
+            
+            // Remove the target node by skipping it
+            currNode.next = currNode.next.next;
+    
+            // If removing the last element, update tail
+            if (pos == size) {
+                tail = currNode;
+            }
+        }
+    
+        size--;
+    }
+
     public void print() {
         Node currNode = head;
         while(currNode != null) {
@@ -96,11 +127,19 @@ public class SinglyLinkedList {
         System.out.println("Tail is " + slist.tail.data);
         System.out.println("Size is " + slist.size);
 
-        slist.insertAfter(2, 99);
-        slist.insertAfter(1, 22);
-        slist.insertAfter(7, 101);
-        slist.insertAfter(10, 11);
+        slist.insert(2, 99);
+        slist.insert(1, 22);
+        slist.insert(7, 101);
+        slist.insert(10, 11);
 
+        slist.print();
+        System.out.println("Head is " + slist.head.data);
+        System.out.println("Tail is " + slist.tail.data);
+        System.out.println("Size is " + slist.size);
+
+        slist.remove(2);
+        slist.remove(7);
+        slist.remove(1);
         slist.print();
         System.out.println("Head is " + slist.head.data);
         System.out.println("Tail is " + slist.tail.data);
