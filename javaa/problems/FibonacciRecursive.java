@@ -49,6 +49,17 @@ public class FibonacciRecursive {
         return series[num];
     }
 
+    public static int findFibonacciMemoized(int n, int[] memo) {
+        if (memo[n] != 0)
+            return memo[n];
+        if (n == 1 || n == 2)
+            return 1;
+        else {
+            memo[n] = findFibonacciMemoized(n - 1, memo) + findFibonacciMemoized(n - 2, memo);
+            return memo[n];
+        }
+    }
+
 
     public static void main(String[] args) {
         // 0, 1, 1, 2, 3, 5, 8, 13, 21 = 2
@@ -61,5 +72,11 @@ public class FibonacciRecursive {
         System.out.println(findFibonacciIterative2(3));
         System.out.println(findFibonacciIterative2(0));
         System.out.println(findFibonacciIterative2(8));
+
+        int n = 10;
+        int[] memo = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            System.out.print(findFibonacciMemoized(i, memo) + " ");
+        }
     }
 }
