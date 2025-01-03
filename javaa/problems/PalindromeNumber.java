@@ -9,7 +9,7 @@ public class PalindromeNumber {
         if (num < 0)
             return false;
 
-        if (num == 0 && num % 10 == 0)
+        if (num != 0 && num % 10 == 0)
             return false;
 
         int reverse = 0;
