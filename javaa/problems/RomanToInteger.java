@@ -22,8 +22,14 @@ public class RomanToInteger {
         int result = 0;
         int len = s.length();
         for (int i = 0; i < len; i++) {
-            if ()
+            if (i < len - 1 && map.get(s.charAt(i)) < map.get(s.charAt(i + 1))) {
+                result -= map.get(s.charAt(i));
+            } else {
+                result += map.get(s.charAt(i));
+            }
         }
+
+        return result;
     }
 
     public static void main(String[] args) {
