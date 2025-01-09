@@ -1,5 +1,9 @@
 package javaa.dsa;
 
+/*
+ * LeetCode: #704 Binary Search Given an array of ints nums which is sorted in asc order, search
+ * target val
+ */
 public class BinarySearch {
     public static boolean search(int[] arr, int val) {
         // Check if the array is empty
