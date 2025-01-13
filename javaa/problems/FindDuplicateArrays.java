@@ -3,7 +3,7 @@ package javaa.problems;
 import java.util.HashSet;
 import java.util.Set;
 
-public class FindDuplicatesArray {
+public class FindDuplicateArrays {
     public static void main(String[] args) {
         int[] arr1 = {1, 2, 3, 4};
         int[] arr2 = {5, 4, 6, 9, 7};
