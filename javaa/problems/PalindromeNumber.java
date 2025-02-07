@@ -9,25 +9,24 @@ public class PalindromeNumber {
         if (num < 0)
             return false;
 
-        if (num != 0 && num % 10 == 0)
+        if (num != 0 && num % 10 == 0) // Numbers that ends with 0
             return false;
 
-        int reverse = 0;
-        while (num > reverse) { // To stop when we are in the middle of splitting
+        int reversedHalf = 0;
+        while (num > reversedHalf) { // To stop when we are in the middle of splitting
             int lastDigit = num % 10;
-            reverse = reverse * 10 + lastDigit;
+            reversedHalf = reversedHalf * 10 + lastDigit;
             num = num / 10;
-            System.out.println("Num " + num);
-            System.out.println("Reverse " + reverse);
         }
 
-        return (num == reverse) || (num == reverse / 10); // If odd num, then reverse might have
-                                                          // extra digit
+        return (num == reversedHalf) || (num == reversedHalf / 10); // If odd num, then reverse
+                                                                    // might have
+        // extra digit
     }
 
     public static void main(String[] args) {
         System.out.println(findIsPalindromeNum(121));
-        System.out.println(findIsPalindromeNum(1212));
+        System.out.println(findIsPalindromeNum(2112));
         System.out.println(findIsPalindromeNum(4));
     }
 }
